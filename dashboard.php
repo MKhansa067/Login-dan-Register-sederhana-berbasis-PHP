@@ -5,22 +5,19 @@
         session_destroy();
         header("Location: index.php");
     }
-?>
-
-<?php
-session_start();
-
-if (isset($_POST["logout"])) {
-    session_unset();      // hapus semua data session
-    session_destroy();    // hapus session
-    header("Location: index.php"); // kembali ke halaman utama
-    exit();
-}
-
-if (!isset($_SESSION["is_login"])) {
-    header("Location: index.php");
-    exit();
-}
+    session_start();
+    
+    if (isset($_POST["logout"])) {
+        session_unset();      // hapus semua data session
+        session_destroy();    // hapus session
+        header("Location: index.php"); // kembali ke halaman utama
+        exit();
+    }
+    
+    if (!isset($_SESSION["is_login"])) {
+        header("Location: index.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -39,4 +36,5 @@ if (!isset($_SESSION["is_login"])) {
     </form>
     <?php include "layout/footer.php"; ?>
 </body>
+
 </html>
